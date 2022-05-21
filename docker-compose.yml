@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+        - "8080:80"
+    volumes:
+        - ./code:/code
+        - ./site.conf:/etc/nginx/conf.d/site.conf
+    links:
+        - php
+    restart: unless-stopped
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php
+    volumes:
+      - ./code:/code
+    links:
+      - ffmpeg
+    restart: unless-stopped
+
+  webhookrelayd:
+    image: webhookrelay/webhookrelayd
+    container_name: webhookrelayd
+    links:
+      - nginx
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  ffmpeg:
+    image: jrottenberg/ffmpeg:4.1-alpine
+    container_name: ffmpeg

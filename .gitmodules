@@ -1,0 +1,3 @@
+[submodule "code/IDontWantToRead"]
+	path = code/IDontWantToRead
+	url = git@github.com:kennethDow/IDontWantToRead.git
