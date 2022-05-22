@@ -9,3 +9,6 @@ docker compose up -d
 echo "remove default.conf file"
 docker exec -d nginx rm /etc/nginx/conf.d/default.conf
 docker exec -d nginx service nginx reload
+
+echo "Add Cron Job"
+docker exec -d php crontab
