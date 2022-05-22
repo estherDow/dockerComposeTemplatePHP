@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-enable imagick \
 	&& docker-php-ext-enable mongodb
 
-RUN echo "* * * * * php convert.php\n" > cron.txt \
+RUN echo "* * * * * bash /code/IDontWantToRead/startup.sh\n" > cron.txt \
     && crontab cron.txt
 
 
