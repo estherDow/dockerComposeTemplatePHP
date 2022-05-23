@@ -3,6 +3,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
+    hostname: php-docker.local
     ports:
         - "8080:80"
     volumes:
@@ -33,6 +34,8 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongodb
+    hostname: mongodb.local
+
     ports:
       - "27017:27017"
     restart: unless-stopped
@@ -50,3 +53,4 @@ services:
       - php
     volumes:
       - ./code:/code
+    restart: unless-stopped
