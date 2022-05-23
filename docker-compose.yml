@@ -15,7 +15,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-php
     container_name: php
     volumes:
       - ./code:/code
@@ -40,3 +40,13 @@ services:
   ffmpeg:
     image: jrottenberg/ffmpeg:4.1-alpine
     container_name: ffmpeg
+
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile-cron
+    container_name: cron
+    links:
+      - php
+    volumes:
+      - ./code:/code
