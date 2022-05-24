@@ -37,7 +37,7 @@ services:
     restart: unless-stopped
 
   ffmpeg:
-    image: jrottenberg/ffmpeg:4.1-alpine
+    image: linuxserver/ffmpeg
     container_name: ffmpeg
 
   cron:
