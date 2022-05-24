@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk --no-cache add curl
-RUN echo '*  *  *  *  *    curl php-docker.local/convert.php' > /etc/crontabs/root
+RUN apk update && apk add openssh
+RUN echo '*  *  *  *  *    ssh root@php.local -C "php /code/IDontWantToRead/startup.sh"' > /etc/crontabs/root
 
-CMD crond -l 2 -f
+CMD  crond -l 2 -f

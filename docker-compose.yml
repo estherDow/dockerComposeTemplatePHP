@@ -12,12 +12,14 @@ services:
     links:
         - php
     restart: unless-stopped
-
   php:
     build:
       context: .
       dockerfile: Dockerfile-php
     container_name: php
+    hostname: php.local
+    ports:
+      - "2200:22"
     volumes:
       - ./code:/code
     links:
