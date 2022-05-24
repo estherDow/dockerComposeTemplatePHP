@@ -12,6 +12,7 @@ services:
     links:
         - php
     restart: unless-stopped
+
   php:
     build:
       context: .
@@ -24,13 +25,6 @@ services:
       - ./code:/code
     links:
       - ffmpeg
-    restart: unless-stopped
-
-  webhookrelayd:
-    image: webhookrelay/webhookrelayd
-    container_name: webhookrelayd
-    links:
-      - nginx
     restart: unless-stopped
 
   mongodb:
