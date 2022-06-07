@@ -1,6 +1,6 @@
 FROM alpine:latest
 RUN apk update && apk add curl
-RUN echo '*  *  *  *  *    curl nginx/trigger_convert.php' > /etc/crontabs/root
+RUN echo '*/20 *  *  *  *    curl nginx/trigger_convert.php' > /etc/crontabs/root
 RUN echo '0  */2  *  *  *   curl nginx/trigger_rescanFolders.php' >> /etc/crontabs/root
 
 CMD  crond -l 2 -f
