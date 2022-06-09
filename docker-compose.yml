@@ -33,7 +33,7 @@ services:
     hostname: mongodb.local
 
     ports:
-      - "27017:27017"
+      - "27040:27017"
     restart: unless-stopped
 
   ffmpeg:
