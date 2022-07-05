@@ -5,12 +5,12 @@ services:
     container_name: nginx
     hostname: php-docker.local
     ports:
-        - "8080:80"
+      - "8080:80"
     volumes:
-        - ./code:/code
-        - ./site.conf:/etc/nginx/conf.d/site.conf
+      - ./code:/code
+      - ./site.conf:/etc/nginx/conf.d/site.conf
     links:
-        - php
+      - php
     restart: unless-stopped
 
   php:
@@ -23,8 +23,6 @@ services:
       - "2200:22"
     volumes:
       - ./code:/code
-    links:
-      - ffmpeg
     restart: unless-stopped
 
   mongodb:
@@ -34,19 +32,4 @@ services:
 
     ports:
       - "27040:27017"
-    restart: unless-stopped
-
-  ffmpeg:
-    image: linuxserver/ffmpeg
-    container_name: ffmpeg
-
-  cron:
-    build:
-      context: .
-      dockerfile: Dockerfile-cron
-    container_name: cron
-    links:
-      - php
-    volumes:
-      - ./code:/code
     restart: unless-stopped
