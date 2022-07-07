@@ -1,2 +1,2 @@
-*  *  *  *  *    bash /code/IDontWantToRead/startup.sh
-0 */8  *  *  *   php /code/IDontWantToRead/trigger_rescanFolders.php
+*  *  *  *  *  root bash /code/IDontWantToRead/startup.sh
+0 */8  *  *  *  root /usr/local/bin/php /code/IDontWantToRead/trigger_rescanFolders.php
