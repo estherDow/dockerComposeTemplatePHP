@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libmagickwand-dev --no-install-recommends \
     && pecl install imagick mongodb \
 	&& docker-php-ext-enable imagick \
-	&& docker-php-ext-enable mongodb \
+	&& docker-php-ext-enable mongodb
 COPY crontab /etc/cron.d/crontab
 RUN chmod 0644 /etc/cron.d/crontab && crontab /etc/cron.d/crontab
 

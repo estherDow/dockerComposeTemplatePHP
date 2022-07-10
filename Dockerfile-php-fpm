@@ -1,0 +1,10 @@
+FROM php:8.0-fpm
+EXPOSE 22
+RUN pecl install mongodb \
+    && docker-php-ext-enable mongodb
+
+
+
+
+
+

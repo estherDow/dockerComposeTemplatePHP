@@ -16,7 +16,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: Dockerfile-php
+      dockerfile: Dockerfile-php-fpm
     container_name: php
     hostname: php.local
     ports:
@@ -33,3 +33,12 @@ services:
     ports:
       - "27040:27017"
     restart: unless-stopped
+
+  typer-the-converter:
+      build:
+        context: .
+        dockerfile: Dockerfile-php
+      container_name: tyler
+      volumes:
+        - ./code:/code
+      restart: unless-stopped

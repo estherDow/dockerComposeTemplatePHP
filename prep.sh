@@ -1,7 +1,7 @@
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
 
-echo "building php Image"
+echo "building docker Images"
 docker compose build
 echo "starting docker"
 docker compose up -d
