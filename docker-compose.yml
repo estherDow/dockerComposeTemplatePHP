@@ -10,20 +10,25 @@ services:
       - ./code:/code
       - ./site.conf:/etc/nginx/conf.d/site.conf
     links:
-      - php
+      - php-fpm
     restart: unless-stopped
 
-  php:
+  php-fpm:
     build:
       context: .
       dockerfile: Dockerfile-php-fpm
-    container_name: php
+    container_name: php-fpm
     hostname: php.local
     ports:
       - "2200:22"
     volumes:
       - ./code:/code
-    restart: unless-stopped
+    restart: always
+    healthcheck:
+      test: curl -sS php-docker.local || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3
 
   mongodb:
     image: mongo:latest
@@ -33,12 +38,3 @@ services:
     ports:
       - "27040:27017"
     restart: unless-stopped
-
-  typer-the-converter:
-      build:
-        context: .
-        dockerfile: Dockerfile-php
-      container_name: tyler
-      volumes:
-        - ./code:/code
-      restart: unless-stopped
