@@ -24,11 +24,7 @@ services:
     volumes:
       - ./code:/code
     restart: always
-    healthcheck:
-      test: curl -sS php-docker.local || exit 1
-      interval: 5s
-      timeout: 10s
-      retries: 3
+
 
   mongodb:
     image: mongo:latest
