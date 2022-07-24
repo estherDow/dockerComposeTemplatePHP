@@ -14,23 +14,20 @@ services:
     restart: unless-stopped
 
   php-fpm:
-    build:
-      context: .
-      dockerfile: Dockerfile-php-fpm
+    image: php:8.0-fpm
     container_name: php-fpm
     hostname: php.local
     ports:
       - "2200:22"
     volumes:
       - ./code:/code
-    restart: always
+    restart: unless-stopped
 
 
   mongodb:
     image: mongo:latest
     container_name: mongodb
     hostname: mongodb.local
-
     ports:
       - "27040:27017"
     restart: unless-stopped
