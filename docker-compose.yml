@@ -14,8 +14,9 @@ services:
     restart: unless-stopped
 
   php-fpm:
-    image: php:8.0-fpm
-    container_name: php-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile-php-fpm
     hostname: php.local
     ports:
       - "2200:22"
